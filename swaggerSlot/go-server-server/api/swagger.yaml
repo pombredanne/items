@@ -1,0 +1,115 @@
+---
+swagger: "2.0"
+info:
+  description: "A slot crud apis"
+  version: "1.0.0"
+  title: "Basic swagger example application"
+schemes:
+- "http"
+consumes:
+- "application/io.goswagger.examples.todo-list.v1+json"
+- "application/json"
+produces:
+- "application/io.goswagger.examples.todo-list.v1+json"
+- "application/json"
+paths:
+  /slots/list:
+    get:
+      description: "Gets some slots"
+      operationId: "GetAll"
+      parameters: []
+      responses:
+        200:
+          description: "returns slot list of all"
+          schema:
+            $ref: "#/definitions/Slots"
+  /slot/add:
+    post:
+      description: "new a slot"
+      operationId: "addOne"
+      parameters:
+      - in: "body"
+        name: "slot_name"
+        description: "new a slot"
+        required: false
+        schema:
+          $ref: "#/definitions/slot_name"
+        x-exportParamName: "SlotName"
+      responses:
+        200:
+          description: "returns a msg"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /slot/modify:
+    post:
+      description: "modify a slot name by given id"
+      operationId: "modifySlot"
+      parameters:
+      - in: "body"
+        name: "slot_id"
+        description: "use slot_id to locate a slot"
+        required: false
+        schema:
+          $ref: "#/definitions/slot_id"
+        x-exportParamName: "SlotId"
+      responses:
+        200:
+          description: "success modify a slot"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+  /slot/delete:
+    post:
+      description: "delete a slot name by given id"
+      operationId: "deleteSlot"
+      parameters:
+      - in: "body"
+        name: "slot_id"
+        description: "use slot_id to locate a slot"
+        required: false
+        schema:
+          $ref: "#/definitions/slot_id_1"
+        x-exportParamName: "SlotId"
+      responses:
+        200:
+          description: "success delete a slot"
+          schema:
+            $ref: "#/definitions/inline_response_200"
+definitions:
+  Slot:
+    required:
+    - "slot_name"
+    properties:
+      id:
+        type: "integer"
+      slot_name:
+        type: "string"
+  Slots:
+    type: "array"
+    items:
+      $ref: "#/definitions/Slot"
+  slot_name:
+    required:
+    - "slot_name"
+    properties:
+      slot_name:
+        type: "string"
+  inline_response_200:
+    required:
+    - "msg"
+    properties:
+      msg:
+        type: "string"
+    example:
+      msg: "msg"
+  slot_id:
+    required:
+    - "slot_id"
+    properties:
+      slot_id:
+        type: "string"
+  slot_id_1:
+    required:
+    - "slot_id"
+    properties:
+      slot_id:
+        type: "string"

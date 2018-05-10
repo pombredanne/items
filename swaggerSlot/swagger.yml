@@ -1,0 +1,106 @@
+swagger: "2.0"
+info:
+  description: A slot crud apis
+  title: Basic swagger example application
+  version: 1.0.0
+consumes:
+- application/io.goswagger.examples.todo-list.v1+json
+- application/json
+produces:
+- application/io.goswagger.examples.todo-list.v1+json
+- application/json
+schemes:
+- http
+paths:
+  /slots/list:
+    get:
+      operationId: GetAll
+      description: Gets some slots
+      responses: 
+        200:
+          description: returns slot list of all
+          schema:
+            $ref: "#/definitions/Slots"
+  /slot/add:
+    post:
+      operationId: addOne
+      description: new a slot
+      parameters:
+        - name: slot_name
+          in: body
+          description: new a slot
+          schema:
+            required:
+              - slot_name
+            properties:
+              slot_name:
+                type: string
+      responses: 
+        200:
+          description: returns a msg
+          schema:
+              required:
+                - msg
+              properties:
+                msg:
+                  type: string
+  /slot/modify:
+    post:
+      operationId: modifySlot
+      description: modify a slot name by given id
+      parameters:
+        - name: slot_id
+          in: body
+          description: use slot_id to locate a slot
+          schema:
+            required:
+              - slot_id
+            properties:
+              slot_id:
+                type: string
+      responses:
+        200:
+          description: success modify a slot
+          schema:
+            required:
+              - msg
+            properties:
+              msg:
+                type: string
+  /slot/delete:
+    post:
+      operationId: deleteSlot
+      description: delete a slot name by given id
+      parameters:
+        - name: slot_id
+          in: body
+          description: use slot_id to locate a slot
+          schema:
+            required:
+              - slot_id
+            properties:
+              slot_id:
+                type: string
+      responses:
+        200:
+          description: success delete a slot
+          schema:
+            required:
+              - msg
+            properties:
+              msg:
+                type: string
+                            
+definitions:
+  Slot:
+    required:
+      - slot_name
+    properties:
+      id:
+        type: integer
+      slot_name:
+        type: string
+  Slots:
+    type: array
+    items:
+      $ref: "#/definitions/Slot"
