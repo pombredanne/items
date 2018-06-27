@@ -1,0 +1,14 @@
+优惠券获取api:
+host/xmCoupon
+实例:
+http://www.test.com/xmCoupon
+成功:
+{
+"status":1,
+"data":"XJKKADFMASKDASD"
+}
+失败:
+{
+"status":-1,
+"data":"优惠券已领完"
+}

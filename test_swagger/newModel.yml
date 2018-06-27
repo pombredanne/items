@@ -1,0 +1,29 @@
+swagger: "2.0"
+
+info:
+  description: an example to add new model
+  title: new a model class
+  version: 1.0.0
+paths: 
+ /:
+    get:
+      tags:
+        - todos
+      responses:
+        200:
+          description: list the todo operations
+
+
+definitions:
+  class:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int
+        readOnly: true
+      class_name:
+        type: string
+        minLength: 1
+      owner:
+        type: string

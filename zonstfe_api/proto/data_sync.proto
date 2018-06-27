@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package proto;
+
+
+service DataSync {
+    rpc SegmentCache (SegmentCacheRequest) returns (Response) {
+    }
+    rpc CampaignCache (CampaignCacheRequest) returns (Response) {
+    }
+    rpc AppCache (AppCacheRequest) returns (Response) {
+    }
+
+}
+
+message SegmentCacheRequest {
+    repeated string sadd = 1;
+    repeated string srem = 2;
+    int64 segment_id = 3;
+}
+
+message AppCacheRequest {
+    string app_id = 1;
+    string event_id = 2;
+}
+
+message CampaignCacheRequest {
+    string campaign_id = 1;
+    string event_id = 2;
+}
+
+message Response {
+    string msg = 1;
+}

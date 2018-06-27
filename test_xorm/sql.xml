@@ -1,0 +1,5 @@
+<sqlMap>
+  <sql id="insert_1">
+    insert into public.user(name) values(?)
+  </sql>
+</sqlMap>

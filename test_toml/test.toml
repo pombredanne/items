@@ -1,0 +1,15 @@
+#This file as Config struct
+
+#this block as Database struct
+[Database]
+driver="jdbc:mysql.jdbc.Driver"
+us="ft"
+password="123"
+
+#this block as SQL struct
+[SQL]
+sql_1= "select * from user"
+sql_2="updata user set name = 'exo'"
+sql_3="delete * from user"
+sql_4="Insert into user(id,name) values(5,'ft')"
+
